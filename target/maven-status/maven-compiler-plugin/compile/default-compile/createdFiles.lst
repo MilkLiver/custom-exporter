@@ -1,0 +1,4 @@
+test\prometheus\custom\exporter\Application.class
+test\prometheus\custom\exporter\MainController.class
+test\prometheus\custom\exporter\BeanSettings.class
+test\prometheus\custom\exporter\ServletInitializer.class
