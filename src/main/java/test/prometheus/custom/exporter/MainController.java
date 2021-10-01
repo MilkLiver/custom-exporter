@@ -169,10 +169,10 @@ public class MainController {
 	}
 
 	@ResponseBody
-	@PostMapping(value = "/getWebhook", produces = "application/json")
+	@PostMapping(value = { "/getWebhook", "/api/{v[1-9]}/{alerts?}" }, produces = "application/json")
 	public String getWebhook(HttpServletRequest request, HttpServletResponse response) {
 
-		log.info("/getWebhook ...");
+		log.info(request.getServletPath().toString() + " ...");
 
 		String line;
 		StringBuilder sb = new StringBuilder();
@@ -182,18 +182,19 @@ public class MainController {
 			}
 
 			if (sb.toString().replace(" ", "").equals("")) {
+				log.error(request.getServletPath().toString() + " not content");
 				return "meow?";
 			}
 			log.info(sb.toString());
 
-			log.info("/getWebhook finish");
+			log.info(request.getServletPath().toString() + " finish");
 
 		} catch (IOException e) {
 			log.error(e.getMessage());
 			for (StackTraceElement elem : e.getStackTrace()) {
 				log.error(elem.toString());
 			}
-			log.info("/getWebhook Error");
+			log.info(request.getServletPath().toString() + " Error");
 		}
 
 		return "receive webhook: " + sb.toString();
