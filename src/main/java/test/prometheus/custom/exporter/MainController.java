@@ -100,6 +100,13 @@ public class MainController {
 		testGauge.labels(testGaugeName, testGaugeLabel).set(Integer.valueOf(-1));
 	}
 
+//	@ResponseBody
+//	@GetMapping(value = "/{.*}", produces = "application/json")
+//	public String getPath(HttpServletRequest request, HttpServletResponse response) {
+//		log.info(request.getServletPath().toString());
+//		return request.getServletPath().toString();
+//	}
+
 	@ResponseBody
 	@GetMapping(value = "/test", produces = "application/json")
 	public String test(HttpServletRequest request, HttpServletResponse response) {

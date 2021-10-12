@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-exporter-deploy
+  labels:
+    name: test-exporter
+    app: springboot
+
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: test-exporter
+  
+  template:
+    metadata:
+      labels:
+        app: test-exporter
+    spec:
+#      serviceAccountName: AA
+#      securityContext:
+#        runAsUser: 0
+#        runAsGroup: 0
+#        fsGroup: 0
+#        allowPrivilegeEscalation: true
+#        privileged: true
+      imagePullSecrets:
+        - name: docker-account01
+
+      containers:
+        - name: deploy-test-springboot
+          image: <image>
+          workingDir: /testfiles
+          command: ["/bin/java", "-jar","deploy-test.jar"]
+          #command: ["tail","-f","/dev/null"]
+          ports:
+          - name: deploy-test
+            containerPort: 9527
+            protocol: TCP

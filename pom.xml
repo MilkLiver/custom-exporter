@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>test.prometheus</groupId>
-	<artifactId>custom.exporter</artifactId>
+	<artifactId>custom-exporter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>custom.exporter</name>

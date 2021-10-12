@@ -1,0 +1,14 @@
+﻿apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: test-ingress.test-exporter
+  #namespace: jenkins01
+spec:
+  rules:
+    - host: test-ingress.test-exporter
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: service-exporter
+              servicePort: 12345
